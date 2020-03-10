@@ -4,10 +4,11 @@ import styled from 'styled-components';
 
 const SiteInfoWrapper = styled.div`
     flex-grow: 1;
-    color: white;
-    margin: auto 0;
+    color: #000;
+    margin: auto 30px;
 `
 const SiteTitle = styled.div`
+    
     font-weight: bold;
 `
 

@@ -6,12 +6,14 @@ import SiteLogo from '../components/SiteLogo';
 
 const MainMenuWrapper = styled.div`
     display: flex;
-    background-color: rgb(3,27,77);
+    background-color: lightgray;
 `
 const MenuItem = styled(Link)`
-    color: white;
+    color: #000;
+    font-weight: bold;
     display: block;
     padding: 8px 16px;
+    text-decoration: none;
 `
 
 const MainMenuInner = styled.div`
@@ -52,11 +54,11 @@ const MainMenu = () => (
                     item.type === "custom" ? 
                     <MenuItem to={`${item.url}`} key={item.title}>
                     {item.title}
-                    </MenuItem> :
+                    </MenuItem> 
+                    :
                     <MenuItem to={`/${item.slug}`} key={item.title}>
                     {item.title}
                     </MenuItem>
-
                 ))}
             </MainMenuInner>
         </MainMenuWrapper>
