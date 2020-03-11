@@ -42,7 +42,7 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             excerpt
             slug
-            date
+            date(formatString:"Do MMM YYYY")
             title
             content
             wordpress_id
@@ -75,7 +75,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Access query results via object destructuring
-  const { allWordpressPage, allWordpressWpPortfolio } = result.data
+  const { allWordpressPage, allWordpressPost, allWordpressWpPortfolio } = result.data
 
   // Create Page pages.
   const pageTemplate = path.resolve(`./src/templates/page.js`)
@@ -134,6 +134,16 @@ exports.createPages = async ({ graphql, actions }) => {
         numberOfPages,
         currentPage: index + 1,
       },
+    })
+  })
+
+  // const pageTemplate = path.resolve(`./src/templates/page.js`)
+  allWordpressPost.edges.forEach(edge => {
+
+    createPage({
+      path: `/post/${edge.node.slug}/`,
+      component: slash(pageTemplate),
+      context: edge.node,
     })
   })
   

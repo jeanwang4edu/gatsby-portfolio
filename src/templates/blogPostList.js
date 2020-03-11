@@ -19,12 +19,62 @@ const PageNumber = styled(Link)`
     text-decoration: none;
 `;
 
+const ReadMoreLinkWrapper = styled.div`
+    position: relative;    
+    border: 1px solid black;
+    width: 120px;
+    padding-left: 15px;
+    background-color: gray;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 3px;
+        background-color: black;
+        transform: scaleY(0);
+        transition: transform .2s,
+                    width .4s cubic-bezier(1,0,0,1) .2s,
+                    background-color .1s;
+        z-index: 1;
+    }
+
+    &:hover::before {
+        transform: scaleY(1);
+        width: 100%;
+    }
+`;
+
+const ReadMoreLink = styled(Link)`
+
+    z-index: 10;
+
+    &:link,
+    &:visited {
+        color: #fff;
+        text-transform: uppercase;
+        text-decoration: none;
+        position: relative;        
+    }
+
+`;
+
 export default({pageContext}) => (
     <Layout>
         {pageContext.posts.map(post => (
             <div key={post.node.wordpress_id}>
                 <h3 dangerouslySetInnerHTML={{__html:post.node.title}} />
+                <small>
+                    {post.node.date}
+                </small>
                 <p dangerouslySetInnerHTML={{__html:post.node.excerpt}} />
+                <ReadMoreLinkWrapper>
+                    <ReadMoreLink to={`/post/${post.node.slug}`}>
+                        Read More &#x2192;
+                    </ReadMoreLink>
+                </ReadMoreLinkWrapper>
             </div>
         ))}
         <Pagination>
