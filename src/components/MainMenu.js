@@ -7,14 +7,7 @@ import SiteLogo from '../components/SiteLogo';
 const MainMenuWrapper = styled.div`
     display: flex;
     background-color: lightgray;
-`
-const MenuItem = styled(Link)`
-    color: #000;
-    font-weight: bold;
-    display: block;
-    padding: 8px 16px;
-    text-decoration: none;
-`
+`;
 
 const MainMenuInner = styled.div`
     max-width: 960px;
@@ -22,7 +15,16 @@ const MainMenuInner = styled.div`
     display: flex;
     width: 960px;
     height: 100%;
-`
+    align-items: center;
+`;
+
+const MenuItem = styled(Link)`
+    color: #000;
+    font-weight: bold;
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+`;
 
 const MainMenu = () => (
     <StaticQuery query={graphql`
