@@ -9,6 +9,7 @@ import React from "react";
 import MainMenu from "./MainMenu";
 import styled, {createGlobalStyle} from 'styled-components';
 import {graphql, StaticQuery} from 'gatsby';
+import {Helmet} from 'react-helmet'
 
 
 const GlobalStyles = createGlobalStyle`
@@ -42,6 +43,11 @@ const Layout = ({ children }) => {
         <div>
           <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i&display=swap" rel="stylesheet"></link>
           <GlobalStyles />
+          <Helmet>
+            <title>Gatsby Wordpress Sourced</title>
+            <meta name="descripton" content="This is the description of our website" />
+            <meta name="keywords" content="gatsby, gatsbyjs wordpress" />
+          </Helmet>
           <MainMenu />
           <LayoutWrapper>
             {children}
